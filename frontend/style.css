@@ -1065,3 +1065,7 @@ main {
 @media (max-width: 600px) {
 	#home { padding-top: env(safe-area-inset-top, 0px); }
 }
+
+@media (max-width: 600px) {
+	.in-max #home { padding-top: 0; }
+}

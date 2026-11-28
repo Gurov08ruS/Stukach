@@ -1,5 +1,7 @@
 (() => {
     const root = document.documentElement;
+    const launch = new URLSearchParams(location.hash.slice(1));
+    if (launch.has("WebAppData") || launch.has("WebAppPlatform")) root.classList.add("in-max");
     const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
     const storageKey = "stukach-theme";
     let preference;
