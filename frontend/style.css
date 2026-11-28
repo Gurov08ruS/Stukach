@@ -1055,8 +1055,8 @@ main {
     font-weight: 600;
 }
 
-:root[data-theme="light"] { color-scheme: light; }
-:root[data-theme="dark"] { color-scheme: dark; }
+:root[data-theme="light"] { color-scheme: only light; }
+:root[data-theme="dark"] { color-scheme: only dark; }
 .header-actions { display: flex; flex: none; align-items: center; gap: 8px; }
 .theme-button { color: var(--deep-blue); }
 .theme-button svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
