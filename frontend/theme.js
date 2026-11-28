@@ -3,11 +3,7 @@
     const launch = new URLSearchParams(location.hash.slice(1));
     if (launch.has("WebAppData") || launch.has("WebAppPlatform")) root.classList.add("in-max");
     const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
-    const storageKey = "stukach-theme";
-    let preference;
-    try {
-        preference = localStorage.getItem(storageKey);
-    } catch {}
+    let preference = null;
 
     function applyTheme() {
         const theme = preference === "light" || preference === "dark"
@@ -28,20 +24,14 @@
     }
 
     applyTheme();
-    systemTheme.addEventListener("change", applyTheme);
-    window.addEventListener("storage", (event) => {
-        if (event.key === storageKey || event.key === null) {
-            preference = event.key === null ? null : event.newValue;
-            applyTheme();
-        }
+    systemTheme.addEventListener("change", () => {
+        preference = null;
+        applyTheme();
     });
     document.addEventListener("DOMContentLoaded", () => {
         applyTheme();
         document.getElementById("toggle-theme")?.addEventListener("click", () => {
             preference = root.dataset.theme === "dark" ? "light" : "dark";
-            try {
-                localStorage.setItem(storageKey, preference);
-            } catch {}
             applyTheme();
         });
     });
